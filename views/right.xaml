@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="Animation.views.right"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Animation.views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="412.534"
+             Name="rWin">
+    <Grid x:Name="ForwardGrid" Margin="0,0,0,-107" Background="White" >
+        <Canvas Margin="0,0,0,10">
+            <Path Name="arrowPath" StrokeThickness="15" Stretch="Fill" Width="163.331" Height="93.225">
+                <Path.Stroke>
+                    <SolidColorBrush x:Name="mBrush" Color="blue"/>
+                </Path.Stroke>
+                <Path.Data>
+                    <PathGeometry Figures="M 0,0 H80 M 40,-20 L 90,0,40,20"/>
+                </Path.Data>
+                <Path.RenderTransform>
+                    <MatrixTransform x:Name="arrow">
+                        <MatrixTransform.Matrix>
+                            <Matrix/>
+                        </MatrixTransform.Matrix>
+                    </MatrixTransform>
+                </Path.RenderTransform>
+                <Path.Triggers>
+                    <EventTrigger RoutedEvent="Window.Loaded">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <MatrixAnimationUsingPath Storyboard.TargetName="arrow" 
+                                  Storyboard.TargetProperty="Matrix" 
+                                  Duration="0:0:1.2" RepeatBehavior="Forever">
+                                    <MatrixAnimationUsingPath.PathGeometry>
+                                        <PathGeometry Figures="M 50,135 C 50,135 50,135 210,135"/>
+                                    </MatrixAnimationUsingPath.PathGeometry>
+                                </MatrixAnimationUsingPath>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Path.Triggers>
+            </Path>
+        </Canvas>
+    </Grid>
+
+</UserControl>
